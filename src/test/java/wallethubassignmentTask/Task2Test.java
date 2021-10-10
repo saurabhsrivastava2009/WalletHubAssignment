@@ -19,14 +19,14 @@ public class Task2Test extends DriverFactory {
 
     /**
      * Test to create a user
-     */
+     *//*
     @Test
     public void testJoinedSuccess() {
         boolean isJoined = signUpPage.navigateToPage()
                 .signUp(dummyUser.getCompleteLoginID(), dummyUser.getUserPassword(), false)
                 .isJoiningSuccessfulDescriptionPresent("Thank you for registering with WalletHub!");
         Assert.assertEquals(true, isJoined, "Joined Successfully");
-    }
+    }*/
 
     /**
      * Test to verify review is posted or not on {@link TestInsurancePage}
