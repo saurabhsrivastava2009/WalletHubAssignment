@@ -35,7 +35,7 @@ public class ProfilePage extends BasePage {
      * @return - the list of page loadables
      */
     @Override
-    List<By> getLoadables() {
+    protected List<By> getLoadables() {
         return Arrays.asList(reviewDetailsBy);
     }
 

@@ -1,6 +1,10 @@
 package config.basicactions;
 
+import org.openqa.selenium.support.ui.Duration;
+import org.openqa.selenium.support.ui.Sleeper;
+
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Class to handle Utilities
@@ -22,5 +26,17 @@ public class Utilities {
             alphabet = alphabet + alphabet.charAt(r.nextInt(alphabet.length()));
         }
         return alphabet;
+    }
+
+    /**
+     * Custom sleep
+     * @param timeOutInSeconds - time in seconds
+     */
+    public static void customSleep(int timeOutInSeconds){
+        try {
+            Sleeper.SYSTEM_SLEEPER.sleep(new Duration(timeOutInSeconds, TimeUnit.SECONDS));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

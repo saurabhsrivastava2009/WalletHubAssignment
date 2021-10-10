@@ -20,13 +20,21 @@ public abstract class BasePage extends DriverFactory {
      *
      * @return - the page loadables
      */
-    abstract List<By> getLoadables();
+    protected abstract List<By> getLoadables();
 
     /**
      * Method to wait for page to load
      */
-    protected void waitForLoad() {
+    public void waitForLoad() {
         getLoadables().forEach(Element::waitForElement);
+    }
+
+    /**
+     * Method to wait for page to load with custom timeout
+     * @param timeOutInSeconds - the time in seconds
+     */
+    public void waitForLoad(int timeOutInSeconds){
+        getLoadables().forEach(by->Element.waitForElementWithCustomTimeOut(by,timeOutInSeconds));
     }
 
     abstract protected BasePage navigateToPage();

@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,16 @@ public class Element {
      */
     public static WebElement waitForElement(By cssSelector) {
         return new WebDriverWait(webDriver, 20).until(ExpectedConditions.visibilityOfElementLocated(cssSelector));
+    }
+
+    /**
+     * Method to wait for the element to load before we perform any operation with custom timeout
+     * @param cssSelector - the cssSelector for which you want to wait
+     * @param timeOutInSeconds - timeout in seconds
+     * @return - the web element if available
+     */
+    public static WebElement waitForElementWithCustomTimeOut(By cssSelector,int timeOutInSeconds) {
+        return new WebDriverWait(webDriver, timeOutInSeconds).until(ExpectedConditions.visibilityOfElementLocated(cssSelector));
     }
 
     /**
@@ -140,5 +151,10 @@ public class Element {
     public static void selectDropdownOption(By dropDownElement, By dropDownItemsElement, String valueToBeSelected) {
         click(waitForElement(dropDownElement));
         clickOneOfMany(dropDownItemsElement, valueToBeSelected);
+    }
+
+    public static void switchToDialog(){
+        List<String> windows = new ArrayList<>(webDriver.getWindowHandles());
+        webDriver.switchTo().window(windows.get(1));
     }
 }

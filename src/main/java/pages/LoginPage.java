@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
      * @return - the list of page loadables
      */
     @Override
-    List<By> getLoadables() {
+    protected List<By> getLoadables() {
         return Arrays.asList(emailIDBy, passwordBy, loginBy);
     }
 

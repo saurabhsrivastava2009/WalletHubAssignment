@@ -29,7 +29,7 @@ public class SignUpPage extends BasePage {
      * @return - the list of page loadables
      */
     @Override
-    List<By> getLoadables() {
+    protected List<By> getLoadables() {
         return Arrays.asList(emailBy, passwordBy, confirmPasswordBy);
     }
 
@@ -51,7 +51,6 @@ public class SignUpPage extends BasePage {
      *
      * @param email           - your email
      * @param password        - password of your choice
-     * @param confirmPassword - same as password
      * @param shouldCheck     - true if you want to check credit score else false
      * @return - {@link SignUpPage} for chaining
      */
