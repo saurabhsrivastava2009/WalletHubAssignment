@@ -1,20 +1,19 @@
 pipeline {
-  agent any
-  tools {
-    maven '${M2_HOME}'
-  }
-  stages {
-    stage ('Build') {
-      steps {
-        sh 'mvn clean package'
-      }
-    }
-    stage ('Test') {
-      steps {
-        script {
-          sh 'mvn -Dtest=testTestInsurancePageReviewPosted'
+    agent any
+ 
+    stages {
+        stage('Test') {
+            steps {
+                bat "mvn -D clean test"
+            }
+ 
+            post {                
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                   echo "success"
+                }
+            }
         }
-      }
     }
-  }
 }
